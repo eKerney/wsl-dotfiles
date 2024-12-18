@@ -10,4 +10,6 @@ return {
     { "MeanderingProgrammer/render-markdown.nvim", lazy = false },
     { "ThePrimeagen/harpoon",                      lazy = true },
     { "nmassardot/nvim-preview-svg",               lazy = true },
+    { "iamcco/markdown-preview.nvim",              lazy = false },
+    { "nvim-tree/nvim-web-devicons",               lazy = false },
 }

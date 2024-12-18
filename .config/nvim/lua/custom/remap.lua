@@ -3,6 +3,7 @@ local nnoremap = require("custom.keymap").nnoremap
 local inoremap = require("custom.keymap").inoremap
 local xnoremap = require("custom.keymap").xnoremap
 local vnoremap = require("custom.keymap").vnoremap
+-- local multigrep = require("custom.multigrep")
 
 vim.g.mapleader = " "
 nnoremap("<leader>e", "<cmd>Ex<CR>")
@@ -13,12 +14,14 @@ nnoremap("<leader>1", "0")
 nnoremap("<leader>0", "$")
 nnoremap("<leader>5", "gM")
 nnoremap("<leader>6", "gM")
+
+-- vim.keymap.set("n", "<leader>fm", live_multigrep)
 -- Normal --
 -- Better window navigation
-nnoremap("<C-h>", "<C-w>h")
-nnoremap("<C-j>", "<C-w>j")
-nnoremap("<C-k>", "<C-w>k")
-nnoremap("<C-l>", "<C-w>l")
+-- nnoremap("<C-h>", "<C-w>h")
+-- nnoremap("<C-j>", "<C-w>j")
+-- nnoremap("<C-k>", "<C-w>k")
+-- nnoremap("<C-l>", "<C-w>l")
 inoremap("jk", "<Esc>")
 inoremap("kj", "<Esc>")
 inoremap("kl", "<Esc>")
@@ -59,5 +62,9 @@ api.nvim_create_autocmd("TextYankPost", {
 -- testing ColorHighlight remap
 vim.keymap.set('n', '<leader>c', [[<Cmd>ColorHighlight<CR>]], opts)
 vim.keymap.set('n', '<leader>cl', [[<Cmd>ColorClear<CR>]], opts)
+-- vim.keymap.set('n', '<c-k>', 'wincmd k<CR>')
+-- vim.keymap.set('n', '<c-j>', 'wincmd j<CR>')
+-- vim.keymap.set('n', '<c-h>', 'wincmd h<CR>')
+-- vim.keymap.set('n', '<c-l>', 'wincmd l<CR>')
 
 -- END ANSIBLE MANAGED BLOCK

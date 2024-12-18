@@ -1,13 +1,13 @@
-require("custom")
--- require("custom.remap")
--- require("custom.setter")
--- require("custom.harpoon")
+-- [[ KICKSTART NVIM CUSTOM INIT.LUA ]] --
+-- *********************************]] --
+
+-- [[ SET LEADER KEYBINDS ]] --
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- [[ ENSURE LAZY NVIM INSTALLED ]] --
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -21,75 +21,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure plugins ]]
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
-require("tokyonight").setup({
-  style = "storm",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  light_style = "day",    -- The theme is used when the background is set to light
-  transparent = true,     -- Enable this to disable setting the background color
-  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-  styles = {
-    comments = { italic = true },
-    keywords = { italic = true },
-    functions = {},
-    variables = {},
-    -- Background styles. Can be "dark", "transparent" or "normal"
-    sidebars = "transparent",       -- style for sidebars, see below
-    floats = "transparent",         -- style for floating windows
-  },
-  sidebars = { "qf", "help" },      -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-  day_brightness = 0.3,             -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-  hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-  dim_inactive = false,             -- dims inactive windows
-  lualine_bold = false,             -- When `true`, section headers in the lualine theme will be bold
-  --- You can override specific color groups to use other groups or a hex color
-  --- function will be called with a ColorScheme table
-  ---@param colors ColorScheme
-  on_colors = function(colors) end,
-  --- You can override specific highlights to use other groups or a hex color
-  --- function will be called with a Highlights and ColorScheme table
-  ---@param highlights Highlights
-  ---@param colors ColorScheme
-  on_highlights = function(hl, c)
-    local prompt = "#2d3149"
-    hl.TelescopeNormal = {
-      bg = c.bg_dark,
-      fg = c.fg_dark,
-    }
-    hl.TelescopeBorder = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-    hl.TelescopePromptNormal = {
-      bg = prompt,
-    }
-    hl.TelescopePromptBorder = {
-      bg = prompt,
-      fg = prompt,
-    }
-    hl.TelescopePromptTitle = {
-      bg = prompt,
-      fg = prompt,
-    }
-    hl.TelescopePreviewTitle = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-    hl.TelescopeResultsTitle = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-  end,
-
-
-})
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_transparent = true
-vim.cmd("colorscheme tokyonight-night")
---
+-- [[ DEFAULT PLUGINS TO INSTALL WITH LAZY ]] --
 require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -112,7 +44,6 @@ require('lazy').setup({
   },
 
   {
-    -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
@@ -209,21 +140,19 @@ require('lazy').setup({
       end,
     },
   },
-
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     opts = {},
   },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'codedark',
         component_separators = '|',
         section_separators = '',
@@ -231,20 +160,8 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   -- Add indentation guides even on blank lines
-  --   'lukas-reineke/indent-blankline.nvim',
-  --   -- Enable `lukas-reineke/indent-blankline.nvim`
-  --   -- See `:help ibl`
-  --   main = 'ibl',
-  --   opts = {
-  --     indent = { char = { "┆" } }
-  --   },
-  -- },
-
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -276,11 +193,8 @@ require('lazy').setup({
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
   require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
-
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
@@ -289,21 +203,22 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
 }, {})
+-- [[ END MAIN PLUGINS LOADING AND CONFIG ]] --
 
--- [[ Setting options ]]
+
+-- [[ VIM OPTIONS ]] --
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
 -- Set highlight on search
 vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 -- Enable mouse mode
-vim.o.mouse = 'a'
+-- CHANGED
+-- vim.o.mouse = 'a'
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+-- vim.o.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.o.breakindent = true
 -- Save undo history
@@ -332,6 +247,9 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- vim.g.have_nerd_font = true
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -342,9 +260,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- [[ TELESCOPE CONFIG!!!!!!!!!! ]] --
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
+  extensions = {
+    fzf = {}
+  },
   defaults = {
     mappings = {
       i = {
@@ -416,7 +339,7 @@ vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by 
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
--- [[ Configure Treesitter ]]
+-- [[ CONFIGURE TREESITTER ]] --
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
@@ -489,13 +412,12 @@ vim.defer_fn(function()
   }
 end, 0)
 
--- [[ Configure LSP ]]
+-- [[ CONFIGURE LSP ]] --
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
-  --
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
@@ -602,7 +524,8 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
--- [[ Configure nvim-cmp ]]
+
+-- [[ CONFIGURE nvim-cmp ]] --
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
@@ -663,6 +586,10 @@ cmp.setup {
   },
 
 }
+
+-- [[ END CMP CONFIG ]] --
+
+-- [[ ADD GEOJSON AS KNOWN JSON FILETYPE]]
 vim.filetype.add({
   extension = {
     geojson = 'json',
@@ -671,6 +598,123 @@ vim.filetype.add({
 
 require("telescope").load_extension('harpoon')
 require("harpoon").setup()
+require("custom")
+require("tokyonight").setup({
+  style = "storm",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  light_style = "day",    -- The theme is used when the background is set to light
+  transparent = true,     -- Enable this to disable setting the background color
+  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = {},
+    variables = {},
+    -- Background styles. Can be "dark", "transparent" or "normal"
+    sidebars = "transparent",       -- style for sidebars, see below
+    floats = "transparent",         -- style for floating windows
+  },
+  sidebars = { "qf", "help" },      -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+  day_brightness = 0.3,             -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+  hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+  dim_inactive = false,             -- dims inactive windows
+  lualine_bold = false,             -- When `true`, section headers in the lualine theme will be bold
+  --- You can override specific color groups to use other groups or a hex color
+  --- function will be called with a ColorScheme table
+  ---@param colors ColorScheme
+  on_colors = function(colors) end,
+  --- You can override specific highlights to use other groups or a hex color
+  --- function will be called with a Highlights and ColorScheme table
+  ---@param highlights Highlights
+  ---@param colors ColorScheme
+  on_highlights = function(hl, c)
+    local prompt = "#2d3149"
+    local tok_col = {
+      tk_lg_blue = '#b4f9f8',
+      tk_dk_slate = '#1f2335',
+      tk_stl_grey = '#3b4261',
+      tk_blue = '#7dcfff',
+      tk_lg_purp = '#bb9af7',
+      tk_green = '#c3e88d',
+      tk_sea = '#41a6b5',
+      tk_red = '#ff007c',
+      tk_md_grey = '#737aa2',
+      tk_lgt_grey = '#a9b1d6',
+    }
+
+    hl.TelescopeNormal = {
+      bg = c.bg_dark,
+      fg = tok_col.tk_lgt_grey,
+    }
+    hl.TelescopeBorder = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+    hl.TelescopePromptNormal = {
+      bg = prompt,
+    }
+    hl.TelescopePromptBorder = {
+      bg = prompt,
+      fg = prompt,
+    }
+    hl.TelescopePromptTitle = {
+      bg = prompt,
+      fg = tok_col.tk_sea,
+    }
+    hl.TelescopePreviewTitle = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+    hl.TelescopeResultsTitle = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+  end,
+
+
+})
+vim.g.tokyonight_transparent_sidebar = true
+vim.g.tokyonight_transparent = true
+vim.cmd("colorscheme tokyonight-night")
+
+-- [[ MESSING WIHT LUALINE ]] --
+
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'codedark',
+    component_separators = { left = '|', right = '|' },
+    section_separators = { left = '', right = '' },
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 100,
+      tabline = 100,
+      winbar = 100,
+    }
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { '%f' },
+  },
+  inactive_sections = {
+    lualine_c = { '%f' },
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+
+-- [[ KEYMAP EXPERIMENTS ]] --
+require('custom.multigrep').setup()
+
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
