@@ -108,8 +108,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="/snap/bin:$PATH"
 export PATH="/root/.local/bin:$PATH"
-PATH=$PATH:"/mnt/c/Program Files/Microsoft VS Code/bin"
-alias code="code --remote wsl+Ubuntu_22.04_Clean ."
+PATH=$PATH:"/mnt/c/Users/erick/AppData/Local/Programs/Microsoft VS Code/bin"
+# PATH=$PATH:"/mnt/c/Program Files/Microsoft VS Code/bin"
+# alias code="code --remote wsl+Ubuntu_22.04_Clean ."
 export PATH="/home/pi/.local/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -130,3 +131,6 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 alias config='/usr/bin/git --git-dir=/home/pi/dotfiles/ --work-tree=/home/pi'
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
