@@ -68,7 +68,12 @@ require('lazy').setup({
     },
   },
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  {
+    'folke/which-key.nvim',
+    opts = {
+      notify = false
+    }
+  },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -161,7 +166,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',  opts = {} },
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -247,6 +252,8 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- oil.nvim keymap for open dir of current file
 
 -- vim.g.have_nerd_font = true
 
@@ -490,7 +497,7 @@ local servers = {
   gopls = {},
   pyright = {},
   rust_analyzer = {},
-  tsserver = {},
+  ts_ls = { filetypes = { "typescript", "typescriptreact", "typescript.tsx", "typescript.d.ts" } },
   cssmodules_ls = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   jsonls = {},
@@ -714,8 +721,8 @@ require('lualine').setup {
 
 -- [[ KEYMAP EXPERIMENTS ]] --
 require('custom.multigrep').setup()
+require('custom.dev')
 
-
-
+vim.keymap.set('n', '-', '<cmd>Oil<CR>')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
