@@ -18,7 +18,14 @@ return {
             },
             win_options = {
                 wrap = true,
-            }
+            },
+            keymaps = {
+                ["<C-h>"] = false, -- Unbind to avoid conflicts
+                ["<C-j>"] = false,
+                ["<C-k>"] = false,
+                ["<C-l>"] = false,
+            },
+            use_default_keymaps = true,
         })
     end,
 }
