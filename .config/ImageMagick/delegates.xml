@@ -1,0 +1,1 @@
+<delegate decode="png" encode="display" spawn="True" command="magick %i %u.png && /usr/bin/open -a Preview %u.png"/>
