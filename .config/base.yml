@@ -1,0 +1,216 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
+matches:
+  # Simple text replacement
+  - trigger: ':espanso'
+    replace: Hi there!
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ':date'
+    replace: '{{mydate}}'
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: '%m/%d/%Y'
+
+  # Print the output of a shell command
+  - trigger: ':shell'
+    replace: '{{output}}'
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: echo 'Hello from your shell'
+
+  - trigger: ':linkedin'
+    replace: https://www.linkedin.com/in/eric-kerney/
+
+  - trigger: ':github'
+    replace: https://github.com/eKerney
+
+  - trigger: ':gmail'
+    replace: erickerney@gmail.com
+
+  - trigger: ':emailwmu'
+    replace: eric.m.kerney@wmich.edu
+
+  - trigger: ':d3post'
+    replace: Hope you enjoyed my post using D3.js to create an interactive 3D globe visualization.
+
+  - trigger: ':messagehead'
+    replace: I'm a Senior Software Engineer with years of experience building full-stack 
+      systems with Typescript, React, and Python. I have deep domain expertise in geospatial analysis, data visualization, and excel at building AI powered interfaces.  I'd love to chat and learn more about what you are building at your company.
+      Cheers,
+
+  - trigger: ':headline'
+    replace: Inventive Software Engineer and Spatial Technologist connecting complex systems and building solutions to strategic business challenges.  Applying a full-stack of tools and tech to construct impactful digital platforms and resolve subtle anomalies in legacy Applications and APIs.  Bringing the highest level of analytical rigor to data-driven visualizations and AI powered interfaces, scaling stacks to the adjacent stage.  
+
+  - trigger: ':macgyver'
+    replace: I've been called a Geospatial MacGyver and am highly motivated by
+      solving complex problems.  I'll bring passion and creativity for each
+      weekly demo!
+
+  - trigger: ':satellite'
+    replace: A skilled software engineer across the full-stack, I excel in building
+      ground breaking data driven applications through deploying python backends
+      with FastAPI.  Obtaining focused insights and true intelligence from
+      massive datasets and imagery is not an easy task.  By crafting engaging
+      spatial data visualizations and performing detailed analysis, I have been
+      able to deliver innovative solutions.  My experience is an excellent match
+      for the role, having designed, built, maintained, and debugged
+      applications using React, Redux/RTK, AWS services, STAC image catalogs,
+      PostGIS, Geopandas, and uv among others, while bringing deep expertise in
+      GIS/Spatial Science.
+
+  - trigger: ':geoai'
+    replace: I'm extremely interested in the platform you are building at Orion as
+      it closely aligns with my experience and skillset.  I've spent the last 10
+      years building clean and engaging geospatial visualizations and user
+      interfaces, quickly iterating with Mapbox, Leaflet and H3.  I've built and
+      shipped Apps for an aerospace startups, both implementing React Apps and
+      Python APIs with complex spatial analytics.  Recently I've been
+      implementing agentic workflows into Applications with the Vercel AI SDK,
+      which allows full integration with APIs, tools, and frontend mapping and
+      interactions.
+
+  - trigger: ':ci'
+    replace: Kalamazoo
+
+  - trigger: ':st'
+    replace: Michigan
+
+  - trigger: ':coun'
+    replace: United States
+
+  - trigger: ':myai'
+    replace: I work primarily with CLI AI assisted tooling.  I find CLI tools to be
+      closer to the code and file structure, and more integrated into my overall
+      development workflow. Currently I'm using a FOSS CLI called Opencode,
+      which is free to use and works with any number of model providers.  I
+      believe that hand writing code is VERY important, and I've seen other
+      developers quickly lose this skill.  I'll use the AI to solve highly
+      technical problems such as complex Typescript typings, understanding
+      incomprehensible errors, and introspecting a new code base when I need to
+      quickly debug issues.  On the other end I've used CLI tools such as
+      Opencode and Gemini to completely implement new solutions, such as
+      creating an MCP server and frontend for ESRI Living atlas data, helping me
+      learn new concepts while working on other projects.  When it comes to
+      mission critical code and real world systems that rely on it, it's crucial
+      to have checks and testing in place to ensure any AI generated code is
+      verified by qualified humans.
+
+  - trigger: ':why'
+    replace: I'm excited about the platform you are building at Beam, and AI compute
+      platforms are in more demand than ever.  Currently I'm building AI Agents
+      in both JS & Python, comparing the capabilities of each ecosystem, and
+      exploring the most efficient method for hosting ML models.
+
+  - trigger: ':v2why'
+    replace: I'm excited about the platform and AI Forward Systems you are building
+      at RevenueCat.  Currently I'm building AI Agents in both JS & Python,
+      comparing the capabilities of each ecosystem, and exploring the most
+      efficient method for hosting ML models.  I truly enjoy the early startup
+      environment and have learned to be highly adaptable and iterate quickly.
+
+  - trigger: ':hack'
+    replace: One of the best hacks I've found is to contact people directly.  Don't
+      get stuck with all of the official channels and technologies that stand in
+      the way of a direct interaction.  This applies to job applications,
+      solving problems, or for highly knowledgeable people.  Go right to the
+      source and contact the CEO or the developer who built that open source
+      library, often they are happy to share and pleased to discuss the things
+      which they know best!
+
+  - trigger: ':aicode'
+    replace: I am most happy with using Claude Code to debug a large client project
+      and troubleshoot some problems.  We were given a very short timeframe to
+      assess and fix the issues with an app for a very well known NGO.  The App
+      had been built by a contract team from overseas.  Using Claude in the CLI
+      I was able quickly discover the architecture of the codebase,
+      duplications, and trace the logic flows through large functions and
+      components.  Beyond what the standard debugger was capable of.  This
+      allowed me to isolate the issue to a single line and commit the fix.  A
+      process that could have taken a few days was reduced to only a couple of
+      hours!
+
+  - trigger: ':aibuilt'
+    replace: At Blue Raster I took ownership of AI Powered Applications and
+      Innovation.  The first challenge was determining which technology stack to
+      utilize.  For what we were primarily building (React, Typescript, NextJS)
+      Apps, utilizing the vercel AI SDK seemed a great option.  Smooth
+      integration into NextJS, and it's built-in backend API capability allowed
+      the server side call and secrets to be handled away from client view.  The
+      first project we built was an 'Am I in a Floodzone?' which allowed the
+      user to type in any address in the US, generate a [lat,lon] geolocation
+      from the address, and determine if the located was within a floodplain,
+      and it not how far away.  The developer team continually tried to use
+      massive prompts to get the App and LLM working together properly, however
+      I found that thoughtfully created tools with clear descriptions worked
+      much better.  Additionally this did not immediately pollute the context
+      window with excessive tokens initially.  The App needed to generate a
+      correct result so that users could make a proper assessment, and it
+      directed them to FEMA and flood insurance offerings if inside the
+      floodzone.  Initially testing with lower quality and free models, we found
+      that the better frontier models performed much more reliably, were able to
+      use the tools properly, and at times inferred results beyond what was
+      anticipated.  It did not require the most cutting edge models, e.g.
+      gpt-5.2 vs gpt-4o-mini, which performed well for this application.
+
+  - trigger: ':aieval'
+    replace: When building AI systems, I believe the correct approach is to treat
+      the AI in a similar manner to other API interactions.  You send a query to
+      the LLM/Agent, and anticipate a range of responses.  While the response
+      may not be exactly the same each time, using libraries such as Zod can
+      truly help to define the shape of the input and output.  This would be
+      crucial to any production grade system, and in this way the general
+      architecture would not be considerably different than other
+      systems.  Additional research will need to be conducted to evaluate text
+      responses to determine if they meet the specified requirements, perhaps
+      integrating AI test interpretation into the loop?  Using tools such as
+      playwright can go quite far to control and test UI/UX interactions within
+      AI powered applications.
+
+  - trigger: ':product'
+    replace: Yes I spent 3 years at a Series B Startup, Airspace Link, where we were
+      building a new digital infrastructure for low altitude flight.  Making my
+      shift from government to industry, I learned about the importance of
+      market signals, and how these could be learned from interactions with the
+      customer.  I also had the opportunity of working with an excellent team of
+      DevOps, Data, and Fullstack Engineers.  I took the time to learn as much
+      as possible from those who had been in the industry for many years, and
+      some of the tips and tricks of implementing production systems such as API
+      gateways, robust Python backends, improving code efficiency, and fast
+      debugging.
+
+  - trigger: ':twitter'
+    replace: https://x.com/LocationArtist
+
+  - trigger: ':wmudesc'
+    replace: '- Department had pressing need for instructors to tech technical analytics courses to graduate students. I proposed a curriculum focused on modern python data science workflows with an emphasis on GeoAI, spatial databases, cloud native data, imagery analysis and data pipelines.  - Excellent feedback from students and faculty, providing hands-on instruction for students to expand research into glacial remote sensing, earth observation, community epidemiology and urban land studies. Pursing interdisciplinary PhD with Computer Science Department faculty in 2026.'
+
+  - trigger: ':bluerasterdesc'
+    replace: '- ==Problem:== Company Leadership on AI integration to compete in Geospatial AI Market. - Solution: I promptly delivered a consensus on AI tooling, created a POC, gathered Dev Team support, and drove the prototype into an [MVP for client sales demos.](https://blueraster.com/capabilities/ai-geo-ai/)  App and tech stack integration with the AI SDK, Next.js, ArcGIS Maps SDK, and a seamless deploy on Vercel contributed to Blue Raster receiving the award for [Innovative Use of ArcGIS Technology](https://blueraster.com/stories/blue-raster-esri-devsummit-2026/) at the ESRI DevTech Summit in March 2026.  - Problem: Debug & Refactor complex legacy Systems.  - Solution: Led efforts to troubleshoot existing client applications & APIs as a technical expert, efficiently resoling difficult tickets. I also devised novel methodologies for scientific analytics with large-scale multiband raster data, arriving at efficient solutions that could be implemented with client-side logic. These efforts increased revenues through new and extended client contracts.  - As Senior Developer I owned the Software Development Life Cycle end-to-end, working with clients on business development, assessing requirements, proposing design alternatives (web, mobile, native), to building systems and deploying to Prod. At Blue Raster I met customers on their own cloud, working with AWS, Azure and GCP, architecting frontend and backend systems to solve business problems. '
+
+  - trigger: ':airspacedesc'
+    replace: '- Problem: Rapidly deliver flight critical UAS data products to Enterprise customers.  - Solution: Diagnosed repeatable parts of the workflow that could be automated, while conducting complex risk analysis. The process of moving from disconnected python scripts to deployed microservice APIs, reduced delivery time from weeks to less than one day, reducing costs and allowing features to be productized at scale.  - Problem: Pressing Market Demand for new feature requests not in current product pipeline.  - Solution:* Promoted to lead a small Dev Team to accelerate the AirHub Portal Markeplace, an App Store like Drone ecosystem for the Platform. Implemented an effective React App architecture that could incorporate several mini "Apps", and allowed features to be developed in tandem. I trained a backend engineer to quickly learn frontend tech, and we exceeded our delivery target for 2024 in 9 months, motivating several large clients to sign contracts.  '
+
+  - trigger: ':3dapp'
+    replace: "I created a 3D Globe application to understand DGGS using D3.js and deck.gl.  I've also worked with Three.js, though was specifically looking to construct a 3D Earth environment entirely using SVG graphics without the need for a basemap provider such as Mapbox for Maplibre.  D3 also complete customization in rendering and user interactions which make it both extremely flexible, and challenging to implement a specific visualization.  D3geo offers method for taking GeoJSON vector files(Natural Earth Land Data) and generating a proper projection to render graphics is the proper 3D space.  This library also expects a differing winding order for polygon coordinates, which will draw the polygon as a the hole and vice verse when flipped, as was the case here.  Additionally the rendering of countries across the antimeridian at 180 degrees of longitude does not work properly and the countries needed to be split along this axis.  The globe also is constantly rotating, with a slider that allows the speed to be adjusted.  Over time the the rotating would get slower and slower after user interactions.  I dug into the browser flame chart to see where most the issues originated, which happened to be in the javascript part of the timers for the animation.  The animation was using a mix of local and global variables, and the initialization needed to be moved outside of the timer function.  This increased performance 75% and completely eliminated the slowdown issue!"
+
+  - trigger: 'ledfeature'
+    replace: 'I was leading an App redesign project for a large wind utility construction firm.  The Application was primarily table based, and we were using a legacy implementation related to the existing data system being used by the client.  The Table API did not have positive user interactions, and made adding and removing features and user customization of the table difficult.  We switched to an updated React table library that had many of the basic API features built in, and this resulted in immediate improvements!  The primarily validation was customer trails through the staging and dev sites, and they continued to provide feedback to make the feature even better.  Unit tests were also implemented to ensure that all functionality was duplicated properly in the refactored table, though the user feedback was the primarily validation and acceptance criteria'
