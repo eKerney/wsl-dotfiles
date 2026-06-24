@@ -3,13 +3,13 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-    { "chrisbra/Colorizer",                        lazy = false },
-    { "hiphish/rainbow-delimiters.nvim",           lazy = false },
-    { "yuratomo/w3m.vim",                          lazy = false },
-    { "christoomey/vim-tmux-navigator",            lazy = false },
-    { "MeanderingProgrammer/render-markdown.nvim", lazy = false },
-    { "ThePrimeagen/harpoon",                      lazy = true },
-    { "nmassardot/nvim-preview-svg",               lazy = true },
-    { "iamcco/markdown-preview.nvim",              lazy = false },
-    { "nvim-tree/nvim-web-devicons",               lazy = false },
+	{ "chrisbra/Colorizer", lazy = false },
+	{ "hiphish/rainbow-delimiters.nvim", lazy = true },
+	{ "yuratomo/w3m.vim", lazy = false },
+	{ "christoomey/vim-tmux-navigator", lazy = false },
+	{ "MeanderingProgrammer/render-markdown.nvim", lazy = false },
+	{ "ThePrimeagen/harpoon", lazy = true },
+	{ "nmassardot/nvim-preview-svg", lazy = true },
+	{ "iamcco/markdown-preview.nvim", lazy = false },
+	{ "nvim-tree/nvim-web-devicons", lazy = false },
 }
